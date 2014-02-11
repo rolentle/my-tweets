@@ -5,6 +5,7 @@ gem 'rails', '4.0.2'
 gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'pg'
 
 # Use sqlite3 as the database for Active Record
 
@@ -28,6 +29,7 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
 group :test do
   gem 'sqlite3'
 end
