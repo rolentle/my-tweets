@@ -7,7 +7,6 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -29,9 +28,14 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+group :test do
+  gem 'sqlite3'
+end
 
 group :development, :test do
-    gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'rspec-rails', '~> 3.0.0.beta'
 end
 
 group :doc do
