@@ -11,9 +11,74 @@
   <tr>
     <td><%= status.text %></td>
     <td><%= status.handle %></td>
-    <td><%= status.sent_at %></td>
-    <td><%= status.batch_time %></td>
+    <td><%= distance_of_time_in_words_to_now status.sent_at %> ago</td>
+    <td><%= distance_of_time_in_words_to_now status.batch_time %> ago</td>
   </tr>
 <% end %>
 </tbody>
 </table>
+
+
+
+<script>
+
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Bieber Tweets in The 24 Hours'
+            },
+            xAxis: {
+                categories: [
+		<% @dashboard.last_24_hours_batch_sizes.each do |date|%>
+		  '<%= distance_of_time_in_words_to_now date[0] %> ago',
+		<% end %>
+                ],
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '# of Tweets'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Population in 2008: <b>{point.y:.1f} millions</b>',
+            },
+            series: [{
+                name: 'Tweets',
+		      data: [ <% @dashboard.last_24_hours_batch_sizes.each do |count| %>
+			<%= count[1] %>,
+		    <%end %>
+			],
+
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+    });
+</script>
