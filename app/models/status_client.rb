@@ -11,8 +11,9 @@ class StatusClient
   end
 
   def pull_statuses
+    batch_time = Time.now
     get_statuses.each do |status|
-      write_status(status)
+      write_status(status, batch_time)
     end
   end
 
@@ -20,9 +21,13 @@ class StatusClient
     client.search("Justin Bieber")
   end
 
-  def write_status(status)
-    user.statuses.find_or_create_by(text: status.full_text,
-				    sent_at: status.created_at)
+  def write_status(status, batch_time)
+    status = user.statuses.find_or_create_by(text: status.full_text,
+				    sent_at: status.created_at,
+				    handle: status.user.handle)
+    status.batch_time = batch_time unless status.batch_time
+    status.save
+    puts "writing tweet: #{status.text}\n"
   end
 
   def self.pull_new_statuses
