@@ -12,9 +12,15 @@ class StatusClient
 
   def pull_statuses
     batch_time = Time.now
+    puts "starting pull @ #{batch_time}"
+    old_status = Status.count
+
     get_statuses.each do |status|
       write_status(status, batch_time)
     end
+    end_time = Time.now
+    puts "added #{Status.count - old_status} tweets @ #{Time.now}"
+    puts "ended took #{end_time - batch_time} to run"
   end
 
   def get_statuses
@@ -25,9 +31,8 @@ class StatusClient
     status = user.statuses.find_or_create_by(text: status.full_text,
 				    sent_at: status.created_at,
 				    handle: status.user.handle)
-    status.batch_time = batch_time unless status.batch_time
+    status.batch_time ||= batch_time
     status.save
-    puts "writing tweet: #{status.text}\n"
   end
 
   def self.pull_new_statuses
