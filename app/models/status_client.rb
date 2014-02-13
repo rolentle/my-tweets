@@ -17,7 +17,7 @@ class StatusClient
   end
 
   def get_statuses
-    client.user_timeline(client.user.id, count:200)
+    client.search("Justin Bieber")
   end
 
   def write_status(status)
@@ -26,6 +26,6 @@ class StatusClient
   end
 
   def self.pull_new_statuses
-    User.all.each  { |user| self.new(user).pull_statuses }
+      self.new(User.first).pull_statuses
   end
 end
