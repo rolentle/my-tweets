@@ -33,14 +33,14 @@ $(function () {
             xAxis: {
                 categories: [
 		<% @dashboard.last_24_hours_tweets_per_5min.each do |date|%>
-		  '<%= distance_of_time_in_words_to_now date[0] %> ago',
+		  '<%= date[0].hour %>:<%=date[0].min%>',
 		<% end %>
                 ],
                 labels: {
-                    rotation: -45,
+                    rotation: -90,
                     align: 'right',
                     style: {
-                        fontSize: '13px',
+                        fontSize: '8px',
                         fontFamily: 'Verdana, sans-serif'
                     }
                 }
@@ -66,7 +66,7 @@ $(function () {
 			],
 
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
                     rotation: -90,
                     color: '#FFFFFF',
                     align: 'right',
@@ -98,11 +98,11 @@ $(function () {
             xAxis: {
                 categories: [
 		<% @dashboard.last_24_hours_batch_sizes.each do |date|%>
-		  '<%= distance_of_time_in_words_to_now date[0] %> ago',
+		  '<%= date[0].hour %>:<%=date[0].min%>',
 		<% end %>
                 ],
                 labels: {
-                    rotation: -45,
+                    rotation: -90,
                     align: 'right',
                     style: {
                         fontSize: '13px',
@@ -130,14 +130,14 @@ $(function () {
 			],
 
                 dataLabels: {
-                    enabled: true,
-                    rotation: -90,
+                    enabled: false,
+                    rotation: 180,
                     color: '#FFFFFF',
                     align: 'right',
                     x: 4,
                     y: 10,
                     style: {
-                        fontSize: '13px',
+                        fontSize: '8px',
                         fontFamily: 'Verdana, sans-serif',
                         textShadow: '0 0 3px black'
                     }
