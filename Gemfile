@@ -30,6 +30,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :test do
+  gem 'vcr'
+  gem 'webmock'
   gem 'sqlite3'
 end
 
