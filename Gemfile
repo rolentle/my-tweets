@@ -5,6 +5,7 @@ gem 'rails', '4.0.2'
 gem 'twitter'
 gem 'omniauth-twitter'
 gem 'pg'
+gem "highcharts-rails", "~> 3.0.0"
 
 # Use sqlite3 as the database for Active Record
 
