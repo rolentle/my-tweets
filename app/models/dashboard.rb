@@ -2,7 +2,7 @@ class Dashboard
   def last_24_hours_batch_times
     Status.pluck(:batch_time).uniq.select do |time|
       time > (DateTime.now - 86400)
-    end
+    end.sort
   end
 
   def last_24_hours_batch_sizes
