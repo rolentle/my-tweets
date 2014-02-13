@@ -2,5 +2,9 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require File.expand_path('../config/application', __FILE__)
+desc "get tweets"
+task :pull_statuses do
+  StatusClient.pull_new_statuses
+end
 
 MyTweets::Application.load_tasks

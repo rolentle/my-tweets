@@ -8,7 +8,7 @@ describe StatusClient do
 
     expect(status_client.client).not_to be_nil
 
-    status_client.get_statuses
-    expect(user.statuses.count).to eq 200
+    status_client.pull_statuses
+    expect(user.statuses.count).to be >= 196
   end
 end
