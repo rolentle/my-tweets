@@ -18,6 +18,12 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+  config.around(:each, :vcr) do |example|
+    name = example.metadata[:full_description].split(/\s+/, 2).join("/").underscore.gsub(/[^\w\/]+/, "_")
+    options = {}
+    options[:record] = example.metadata[:record] if example.metadata[:record]
+    VCR.use_cassette(name, options) { example.call }
+  end
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

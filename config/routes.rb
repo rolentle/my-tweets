@@ -1,4 +1,6 @@
 MyTweets::Application.routes.draw do
+  get "dashboard/show"
+  root 'dashboard#show'
   match "/auth/:provider/callback" => "sessions#create", via: [:get, :post]
   get "/signout" => "sessions#destroy", :as => :signout
   get "/:name" => "users#show"
