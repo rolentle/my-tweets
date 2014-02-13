@@ -1,3 +1,4 @@
+
 <div id="tweets_per_minute" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
 <div id="container" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
 <table>
@@ -8,6 +9,7 @@
     <th>Batch Time</th>
   </thead>
   <tbody>
+  <% cache do %>
 <% @statuses.each do |status| %>
   <tr>
     <td><%= status.text %></td>
@@ -16,9 +18,11 @@
     <td><%= distance_of_time_in_words_to_now status.batch_time %> ago</td>
   </tr>
 <% end %>
+<% end %>
 </tbody>
 </table>
 
+  <% cache do %>
 <script>
 
 $(function () {
@@ -146,3 +150,4 @@ $(function () {
         });
     });
 </script>
+<% end %>
