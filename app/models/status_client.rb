@@ -25,8 +25,9 @@ class StatusClient
     status = user.statuses.find_or_create_by(text: status.full_text,
 				    sent_at: status.created_at,
 				    handle: status.user.handle)
-    status.batch_time = batch_time unless status.bacth_time
+    status.batch_time = batch_time unless status.batch_time
     status.save
+    puts "writing tweet: #{status.full_text}\n"
   end
 
   def self.pull_new_statuses
