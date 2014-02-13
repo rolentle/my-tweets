@@ -1,3 +1,4 @@
+<div id="tweets_per_minute" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
 <div id="container" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
 <table>
   <thead>
@@ -18,6 +19,69 @@
 </tbody>
 </table>
 
+<script>
+
+$(function () {
+        $('#tweets_per_minute').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Bieber Tweets Per Miniute'
+            },
+            xAxis: {
+                categories: [
+		<% @dashboard.last_24_hours_tweets_per_5min.each do |date|%>
+		  '<%= distance_of_time_in_words_to_now date[0] %> ago',
+		<% end %>
+                ],
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '# of Tweets'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Tweets: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Tweets',
+		      data: [
+		<% @dashboard.last_24_hours_tweets_per_5min.each do |count|%>
+			<%= count[1] %>,
+		    <%end %>
+			],
+
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+    });
+</script>
 
 
 <script>
@@ -29,7 +93,7 @@ $(function () {
                 margin: [ 50, 50, 100, 80]
             },
             title: {
-                text: 'Bieber Tweets in The 24 Hours'
+                text: 'Bieber Tweets in The 24 Hours by Batch Time'
             },
             xAxis: {
                 categories: [
@@ -56,7 +120,7 @@ $(function () {
                 enabled: false
             },
             tooltip: {
-                pointFormat: 'Population in 2008: <b>{point.y:.1f} millions</b>',
+                pointFormat: 'Tweets: <b>{point.y:.1f}</b>',
             },
             series: [{
                 name: 'Tweets',
