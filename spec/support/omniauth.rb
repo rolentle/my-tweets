@@ -1,9 +1,9 @@
 OmniAuth.config.test_mode = true
 OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
   :provider => "twitter",
-  :uid => "123456",
+  :uid => "15334617",
   :info => {
-    :nickname => "johnqpublic",
+    :nickname => "RolenTLe",
     :name => "John Q Public",
     :location => "Anytown, USA",
     :image => "http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png",
@@ -14,8 +14,8 @@ OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
     }
   },
   :credentials => {
-    :token => "a1b2c3d4...", # The OAuth 2.0 access token
-    :secret => "abcdef1234"
+    :token => "15334617-9E1fyYWv4Y91J8AJES36kVq6mOfiP1HZpI5eyGFcS", # The OAuth 2.0 access token
+    :secret => "Zr0QXedSoq18qEpuEi2PhbYJDv1itkS8bKwPtWWesJWHM"
   },
   :extra => {
     :access_token => "", # An OAuth::AccessToken object
