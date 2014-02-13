@@ -1,4 +1,19 @@
-
+<div id="container" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
+<table>
+  <thead>
+    <th>Tweet</th>
+    <th>Tweeter</th>
+    <th>Sent At</th>
+    <th>Batch Time</th>
+  </thead>
+  <tbody>
 <% @statuses.each do |status| %>
-  <%= status.text %>
+  <tr>
+    <td><%= status.text %></td>
+    <td><%= status.handle %></td>
+    <td><%= status.sent_at %></td>
+    <td><%= status.batch_time %></td>
+  </tr>
 <% end %>
+</tbody>
+</table>
