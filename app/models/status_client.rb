@@ -28,11 +28,12 @@ class StatusClient
   end
 
   def write_status(status, batch_time)
-    status = user.statuses.find_or_create_by(text: status.full_text,
-				    sent_at: status.created_at,
+    status_time = status.created_at - status.created_at.sec
+    new_status = user.statuses.find_or_create_by(text: status.full_text,
+				    sent_at: status_time,
 				    handle: status.user.handle)
-    status.batch_time ||= batch_time
-    status.save
+    new_status.batch_time ||= batch_time
+    new_status.save
   end
 
   def self.pull_new_statuses
