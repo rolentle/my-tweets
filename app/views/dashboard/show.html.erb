@@ -35,11 +35,9 @@ $(function () {
             },
             xAxis: {
                 categories: [
-		<% cache do %>
 		  <% @dashboard.last_24_hours_tweets_per_5min.each do |date|%>
 		    '<%= date[0].hour %>:<%=date[0].min%>',
 		  <% end %>
-		<% end %>
                 ],
                 labels: {
                     rotation: -90,
@@ -65,10 +63,8 @@ $(function () {
             series: [{
                 name: 'Tweets',
 		      data: [
-			<% cache do %>
 		<% @dashboard.last_24_hours_tweets_per_5min.each do |count|%>
 			<%= count[1] %>,
-		    <%end %>
 		    <%end %>
 			],
 
@@ -104,10 +100,8 @@ $(function () {
             },
             xAxis: {
                 categories: [
-		<% cache do %>
 		<% @dashboard.last_24_hours_batch_sizes.each do |date|%>
 		  '<%= date[0].hour %>:<%=date[0].min%>',
-		<% end %>
 		<% end %>
                 ],
                 labels: {
@@ -134,10 +128,8 @@ $(function () {
             series: [{
                 name: 'Tweets',
 		      data: [
-		<% cache do %>
 			<% @dashboard.last_24_hours_batch_sizes.each do |count| %>
 			<%= count[1] %>,
-		    <%end %>
 		    <%end %>
 			],
 
