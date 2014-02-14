@@ -35,8 +35,8 @@ $(function () {
             },
             xAxis: {
                 categories: [
-		  <% @dashboard.last_24_hours_tweets_per_5min.each do |date|%>
-		    '<%= date[0].hour %>:<%=date[0].min%>',
+		  <% @dashboard.last_24_hours_tweets_per_5min.each do |date, count|%>
+		    '<%= date.hour %>:<%=date.min%>',
 		  <% end %>
                 ],
                 labels: {
@@ -63,8 +63,8 @@ $(function () {
             series: [{
                 name: 'Tweets',
 		      data: [
-		<% @dashboard.last_24_hours_tweets_per_5min.each do |count|%>
-			<%= count[1] %>,
+		<% @dashboard.last_24_hours_tweets_per_5min.each do |date, count|%>
+			<%= count %>,
 		    <%end %>
 			],
 
@@ -100,8 +100,8 @@ $(function () {
             },
             xAxis: {
                 categories: [
-		<% @dashboard.last_24_hours_batch_sizes.each do |date|%>
-		  '<%= date[0].hour %>:<%=date[0].min%>',
+		<% @dashboard.last_24_hours_batch_sizes.each do |date, count|%>
+		  '<%= date.hour %>:<%=date.min%>',
 		<% end %>
                 ],
                 labels: {
@@ -128,8 +128,8 @@ $(function () {
             series: [{
                 name: 'Tweets',
 		      data: [
-			<% @dashboard.last_24_hours_batch_sizes.each do |count| %>
-			<%= count[1] %>,
+			<% @dashboard.last_24_hours_batch_sizes.each do |date,count| %>
+			<%= count %>,
 		    <%end %>
 			],
 
