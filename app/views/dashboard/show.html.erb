@@ -1,28 +1,27 @@
 
 <div id="tweets_per_minute" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
 <div id="container" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
-<table>
-  <thead>
-    <th>Tweet</th>
-    <th>Tweeter</th>
-    <th>Sent At</th>
-    <th>Batch Time</th>
-  </thead>
-  <tbody>
-  <% cache do %>
-<% @statuses.each do |status| %>
-  <tr>
-    <td><%= status.text %></td>
-    <td><%= status.handle %></td>
-    <td><%= distance_of_time_in_words_to_now status.sent_at %> ago</td>
-    <td><%= distance_of_time_in_words_to_now status.batch_time %> ago</td>
-  </tr>
+<% cache do %>
+  <table>
+    <thead>
+      <th>Tweet</th>
+      <th>Tweeter</th>
+      <th>Sent At</th>
+      <th>Batch Time</th>
+    </thead>
+    <tbody>
+    <% @statuses.each do |status| %>
+      <tr>
+	<td><%= status.text %></td>
+	<td><%= status.handle %></td>
+	<td><%= distance_of_time_in_words_to_now status.sent_at %> ago</td>
+	<td><%= distance_of_time_in_words_to_now status.batch_time %> ago</td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 <% end %>
-<% end %>
-</tbody>
-</table>
 
-  <% cache do %>
 <script>
 
 $(function () {
@@ -36,8 +35,10 @@ $(function () {
             },
             xAxis: {
                 categories: [
-		<% @dashboard.last_24_hours_tweets_per_5min.each do |date|%>
-		  '<%= date[0].hour %>:<%=date[0].min%>',
+		<% cache do %>
+		  <% @dashboard.last_24_hours_tweets_per_5min.each do |date|%>
+		    '<%= date[0].hour %>:<%=date[0].min%>',
+		  <% end %>
 		<% end %>
                 ],
                 labels: {
@@ -64,8 +65,10 @@ $(function () {
             series: [{
                 name: 'Tweets',
 		      data: [
+			<% cache do %>
 		<% @dashboard.last_24_hours_tweets_per_5min.each do |count|%>
 			<%= count[1] %>,
+		    <%end %>
 		    <%end %>
 			],
 
@@ -101,8 +104,10 @@ $(function () {
             },
             xAxis: {
                 categories: [
+		<% cache do %>
 		<% @dashboard.last_24_hours_batch_sizes.each do |date|%>
 		  '<%= date[0].hour %>:<%=date[0].min%>',
+		<% end %>
 		<% end %>
                 ],
                 labels: {
@@ -128,8 +133,11 @@ $(function () {
             },
             series: [{
                 name: 'Tweets',
-		      data: [ <% @dashboard.last_24_hours_batch_sizes.each do |count| %>
+		      data: [
+		<% cache do %>
+			<% @dashboard.last_24_hours_batch_sizes.each do |count| %>
 			<%= count[1] %>,
+		    <%end %>
 		    <%end %>
 			],
 
@@ -150,4 +158,3 @@ $(function () {
         });
     });
 </script>
-<% end %>
