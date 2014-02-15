@@ -28,6 +28,6 @@ class Dashboard
     #			  {start_time: time,
     #                       end_time: time + 60}).count]
     #end
-    @tweet_time||= Status.where("sent_at >= ?", DateTime.now - 86400).group(:sent_at).order(:sent_at).count
+    @tweet_time||= Status.where("sent_at >= ?", DateTime.now - 86400).uniq.group(:sent_at).order(:sent_at).count
   end
 end
