@@ -23,7 +23,6 @@
 <% end %>
 
 <script>
-
 $(function () {
         $('#tweets_per_minute').highcharts({
             chart: {
@@ -59,7 +58,7 @@ $(function () {
                 enabled: false
             },
             tooltip: {
-                pointFormat: 'Tweets: <b>{point.y:.1f}</b>',
+                pointFormat: 'Tweets: <b>{point.y}</b>',
             },
             series: [{
                 name: 'Tweets',
@@ -124,7 +123,7 @@ $(function () {
                 enabled: false
             },
             tooltip: {
-                pointFormat: 'Tweets: <b>{point.y:.1f}</b>',
+                pointFormat: 'Tweets: <b>{point.y}</b>',
             },
             series: [{
                 name: 'Tweets',
