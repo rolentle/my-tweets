@@ -35,8 +35,7 @@ class StatusClient
     new_status.save
   end
 
-  def self.pull_new_statuses
-      batch_time = Time.now
+  def self.pull_new_statuses(batch_time)
       self.new(User.first).pull_statuses(batch_time)
   end
 end
