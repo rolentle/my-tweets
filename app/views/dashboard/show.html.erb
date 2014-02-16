@@ -102,7 +102,7 @@ $(function () {
             xAxis: {
                 categories: [
 		<% @dashboard.last_24_hours_batch_sizes.each do |date, count|%>
-		  '<%= date.hour %>:<%=date.min%>',
+		    '<%= date_formater(date) %>',
 		<% end %>
                 ],
                 labels: {
