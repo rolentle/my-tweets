@@ -10,8 +10,7 @@ class StatusClient
     end
   end
 
-  def pull_statuses
-    batch_time = Time.now
+  def pull_statuses(batch_time)
     puts "starting pull @ #{batch_time}"
     old_status = Status.count
 
@@ -37,6 +36,7 @@ class StatusClient
   end
 
   def self.pull_new_statuses
-      self.new(User.first).pull_statuses
+      batch_time = Time.now
+      self.new(User.first).pull_statuses(batch_time)
   end
 end
