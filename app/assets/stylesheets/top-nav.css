@@ -1,0 +1,9 @@
+.top-nav {
+  float: right;
+}
+
+.top-nav li {
+   margin-right: 5px;
+   display: inline; 
+   list-style-type: none;
+}

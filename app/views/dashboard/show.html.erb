@@ -1,4 +1,4 @@
-
+<div class="container">
 <div id="tweets_per_minute" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
 <div id="container" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
 <% cache do %>
@@ -35,7 +35,8 @@ $(function () {
             xAxis: {
                 categories: [
 		  <% @dashboard.last_24_hours_tweets_per_5min.each do |date, count|%>
-		    '<%= date.hour %>:<%=date.min%>',
+
+		    '<%= date_formater(date) %>',
 		  <% end %>
                 ],
                 labels: {
@@ -96,7 +97,7 @@ $(function () {
                 margin: [ 50, 50, 100, 80]
             },
             title: {
-                text: 'Bieber Tweets in The 24 Hours by Batch Time'
+                text: 'Bieber Tweets in The Last 24 Hours by Batch Time'
             },
             xAxis: {
                 categories: [
@@ -150,3 +151,4 @@ $(function () {
         });
     });
 </script>
+</div>
