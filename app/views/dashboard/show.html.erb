@@ -27,10 +27,15 @@ $(function () {
         $('#tweets_per_minute').highcharts({
             chart: {
                 type: 'column',
+		backgroundColor: '#f5f5f5',
                 margin: [ 50, 50, 100, 80]
             },
+            colors: ['#2ea879'],
             title: {
-                text: 'Bieber Tweets Per Miniute'
+                text: 'Bieber Tweets Per Miniute',
+		style: {
+		color: '#7C8D87'
+		}
             },
             xAxis: {
                 categories: [
@@ -45,6 +50,7 @@ $(function () {
                     align: 'right',
                     style: {
                         fontSize: '8px',
+                        color: '#2ea879',
                         fontFamily: 'Verdana, sans-serif'
                     }
                 }
@@ -52,7 +58,10 @@ $(function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: '# of Tweets'
+                    text: '# of Tweets',
+		style: {
+		color: '#7C8D87'
+		}
                 }
             },
             legend: {
@@ -72,7 +81,7 @@ $(function () {
                 dataLabels: {
                     enabled: false,
                     rotation: -90,
-                    color: '#FFFFFF',
+                    color: '#2ea879',
                     align: 'right',
                     x: 4,
                     y: 10,
@@ -85,19 +94,21 @@ $(function () {
             }]
         });
     });
-</script>
-
-
-<script>
 
 $(function () {
         $('#container').highcharts({
             chart: {
                 type: 'column',
+		backgroundColor: '#f5f5f5',
                 margin: [ 50, 50, 100, 80]
             },
+colors: ['#2ea879'],
+
             title: {
-                text: 'Bieber Tweets in The Last 24 Hours by Batch Time'
+                text: 'Bieber Tweets in The Last 24 Hours by Batch Time',
+		style: {
+		color: '#7C8D87'
+		}
             },
             xAxis: {
                 categories: [
@@ -117,7 +128,10 @@ $(function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: '# of Tweets'
+                    text: '# of Tweets',
+		style: {
+		color: '#7C8D87'
+		}
                 }
             },
             legend: {
@@ -150,5 +164,7 @@ $(function () {
             }]
         });
     });
+
+
 </script>
 </div>
