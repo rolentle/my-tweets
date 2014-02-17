@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MyTweets</title>
+  <title>Bieber Watch</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if current_user %>
-  Welcome <%= current_user.name %>!
-  <%= link_to "Sign Out", signout_path %>
-<% else %>
-  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
-<% end %>
+  <header>
+  <nav>
+    <div class="top-nav">
+    <ul>
+    <% if current_user %>
+      <li><%= current_user.name %></li>
+      <li><%= link_to "Sign Out", signout_path %></li>
+    <% else %>
+      <li><%= link_to "Sign in with Twitter", "/auth/twitter" %></li>
+    <% end %>
+    </ul>
+  </nav>
+  </div>
+  </header>
 
-<%= yield %>
-
+  <%= yield %>
 </body>
 </html>
