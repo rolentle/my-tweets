@@ -13,7 +13,7 @@
     <% @statuses.each do |status| %>
       <tr>
 	<td><%= status.text %></td>
-	<td><%= status.handle %></td>
+	<td><%= link_to status.handle, "https://twitter.com/#{status.handle}", :target => '_blank' %></td>
 	<td><%= distance_of_time_in_words_to_now status.sent_at %> ago</td>
 	<td><%= distance_of_time_in_words_to_now status.batch_time %> ago</td>
       </tr>
@@ -117,6 +117,7 @@ colors: ['#2ea879'],
 		<% end %>
                 ],
                 labels: {
+                enabled: false,
                     rotation: -90,
                     align: 'right',
                     style: {
